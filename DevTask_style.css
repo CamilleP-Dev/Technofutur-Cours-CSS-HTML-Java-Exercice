@@ -8,39 +8,23 @@
 
 *{
     font-family: "Arial", "Helvetica", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     background-color: rgb(236, 235, 235);
-    margin:0;
-    border:0;
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
 
-header, footer{
-    background-color: var(--maincolor);
-    color: white;
+footer{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    width: 100%;
-    padding: 1rem 4rem;
-    box-sizing: border-box;
 
-    ul {
-        list-style: none;
-        display:flex;
-        flex-direction: row;
-        justify-content: end;
-        margin: 0;
-        padding: 0;
-    }
-
-    li{
-        padding: 1rem;
-    }
 
     div{
         display: flex; 
@@ -58,10 +42,6 @@ header, footer{
         }
     }
 
-    #hamburger_menu{
-        display: none;
-    }
-
     h3, p{
         margin: 0;
     }
@@ -69,7 +49,37 @@ header, footer{
     h3{
         font-size: 1.5rem;
     }
-    
+}
+
+header{
+    #nav_header{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    #hamburger_menu, #hamburger_icon{
+        display: none;
+    }  
+}
+
+footer, header{
+    background-color: var(--maincolor);
+    color: white;
+    width: 100%;
+    padding: 1rem 4rem;
+    ul {
+        list-style: none;
+        display:flex;
+        flex-direction: row;
+        justify-content: end;
+        margin: 0;
+        padding: 0;
+    }
+
+    li{
+        padding: 1rem;
+    }
 }
 
 main{
@@ -115,17 +125,31 @@ main{
             background-color: var(--highcolor);
         }
 
-        .sans_image, .avec_image {
+        .task{
+            display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
-        .avec_image img{
-            margin: 10px;
-            width: 15%;
-            border: solid 1px lightgrey;
-            border-radius: 20px;
-            float: inline-start;
+        .avec_image{
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
+
+        #image {
+            width: 42px;
+            height: 42px;
+            padding: 7px;
+
+            border: 1px solid lightgray;
+            border-radius: 8px;
+
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+
     }
 
     #Formulaire{
@@ -156,11 +180,6 @@ main{
 
 @media screen and (max-width: 780px) {
 
-    body{
-
-        height: auto;
-    }
-
     main{
         display: flex;
         flex-direction: column;
@@ -168,9 +187,8 @@ main{
         margin: 1rem;
 
         section{
-            box-sizing: border-box;
             width: 100%;
-            padding:1rem;
+            padding: 1rem;
         }
     }
 
@@ -196,25 +214,38 @@ main{
         }
     }
 
-    header{
+    #nav_header{
         display: flex;
-        justify-content: space-between;  
+        justify-content: space-around;  
         align-items: center;
 
-        #nav_header{
-            display: none;
+        ul{
+            display: none;  
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
         }
 
-        #hamburger_menu{
+        li{
+            padding: 0;
+        }
+        
+        #hamburger_icon{
             display: flex;
-            flex-direction: column;            
+            flex-direction: column;
         }
 
-        .rectangle_hamburger_menu{
-            width: 50px;
-            height: 5px;
+        .rectangle_hamburger_icon{
+            width: 40px;
+            height: 6px;
             background-color: white;
-            border-radius: 5px
+            border-radius: 5px;
+            margin: 6px;
         }
+            
+        #hamburger_menu:checked ~ ul{
+            display: flex;
+        }     
     }
-}
+}     
